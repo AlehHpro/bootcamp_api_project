@@ -13,9 +13,12 @@ class TestApi(unittest.TestCase):
         url = f"{self.base_url}/users"
         # action
         response = requests.get(url)
-        response_json = response.json()  # Parse JSON response
-        formatted_json = json.dumps(response_json, indent=4)  # Pretty-print JSON
-        print(formatted_json)  # Print formatted JSON
+
+        # Way to print data in readable .json format
+        # response_json = response.json()  # Parse JSON response
+        # formatted_json = json.dumps(response_json, indent=4)  # Pretty-print JSON
+        # print(formatted_json)  # Print formatted JSON
+
         # result
         assert response.status_code == 200
 
@@ -72,7 +75,8 @@ class TestApi(unittest.TestCase):
         }
         # action
         response = requests.put(url, json=data)
-        print(response.json())
+        # print(response.json())
+
         # result
         assert response.status_code == 200
 
@@ -88,13 +92,13 @@ class TestApi(unittest.TestCase):
         # setup
         url = f"{self.base_url}/register"
         data = {
-            "email": "newEmail@test.com",
-            "password": "newPassword"
+            "email": "eve.holt@reqres.in",
+            "password": "pistol"
         }
         # action
         response = requests.post(url, json=data)
         # result
-        assert response.status_code == 400
+        assert response.status_code == 200
 
     def test_register_unsuccessful(self):
         # setup
@@ -112,12 +116,16 @@ class TestApi(unittest.TestCase):
         # setup
         url = f"{self.base_url}/users?delay=3"
         # action
-        try:
-            response = requests.get(url, timeout=self.timeout)
-            self.assertEqual(response.status_code, 200)
-        except ReadTimeout:
-            # Handle the timeout gracefully, e.g., print a message
-            print("The request timed out but we're handling it gracefully.")
+        response = requests.get(url, timeout=self.timeout)
+        self.assertEqual(response.status_code, 200)
+
+        # Way to handle the timeout gracefully, e.g., print a message
+        # try:
+        #     response = requests.get(url, timeout=self.timeout)
+        #     self.assertEqual(response.status_code, 200)
+        # except ReadTimeout:
+        #     # Handle the timeout gracefully, e.g., print a message
+        #     print("The request timed out but we're handling it gracefully.")
 
 
 if __name__ == '__main__':

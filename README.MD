@@ -14,9 +14,9 @@ Before you can run the tests, make sure you have the following installed:
 
 # Installation
 ## Clone the repository:
--```git clone https://github.com/your-username/your-api-test-repo.git```   
+-```git clone git@github.com:AlehHpro/bootcamp_api_project.git```   
 
-  cd your-api-test-repo
+  cd */bootcamp_api_project
 
 ## Create a virtual environment and install dependencies:
 -```pipenv --python 3```  
@@ -29,7 +29,7 @@ Before you can run the tests, make sure you have the following installed:
 2. Navigate to the directory where your Python API tests are located using the `cd` command. For example:
 
    ```bash
-   cd /path/to/your/python/project
+   cd */bootcamp_api_project/tests
 
 3. To run the automated API tests, use the following command:
    ```bash
