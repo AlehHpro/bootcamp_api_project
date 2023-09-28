@@ -5,12 +5,12 @@ from requests import ReadTimeout
 
 
 class TestApi(unittest.TestCase):
-    base_url = "https://reqres.in/api"
-    timeout = 3  # 3 seconds timeout for performance test
+    _BASE_URL = "https://reqres.in/api"
+    _TIMEOUT = 3  # 3 seconds timeout for performance test
 
     def test_list_users(self):
         # setup
-        url = f"{self.base_url}/users"
+        url = f"{self._BASE_URL}/users"
         # action
         response = requests.get(url)
 
@@ -24,7 +24,7 @@ class TestApi(unittest.TestCase):
 
     def test_get_single_user(self):
         # setup
-        url = f"{self.base_url}/users/2"
+        url = f"{self._BASE_URL}/users/2"
         # action
         response = requests.get(url)
         # result
@@ -32,7 +32,7 @@ class TestApi(unittest.TestCase):
 
     def test_get_single_user_details(self):
         # setup
-        url = f"{self.base_url}/users/2"
+        url = f"{self._BASE_URL}/users/2"
         # action
         response = requests.get(url)
         # result
@@ -44,7 +44,7 @@ class TestApi(unittest.TestCase):
 
     def test_single_user_not_found(self):
         # setup
-        url = f"{self.base_url}/users/28"
+        url = f"{self._BASE_URL}/users/28"
         # action
         response = requests.get(url)
         # result
@@ -52,7 +52,7 @@ class TestApi(unittest.TestCase):
 
     def test_create_user(self):
         # setup
-        post_url = f"{self.base_url}/users"
+        post_url = f"{self._BASE_URL}/users"
         post_body = {
             "name": "John",
             "job": "Tester"
@@ -68,7 +68,7 @@ class TestApi(unittest.TestCase):
 
     def test_update_user(self):
         # setup
-        url = f"{self.base_url}/users/2"
+        url = f"{self._BASE_URL}/users/2"
         data = {
             "name": "John",
             "job": "Developer"
@@ -82,7 +82,7 @@ class TestApi(unittest.TestCase):
 
     def test_delete_user(self):
         # setup
-        url = f"{self.base_url}/users/2"
+        url = f"{self._BASE_URL}/users/2"
         # action
         response = requests.delete(url)
         # result
@@ -90,7 +90,7 @@ class TestApi(unittest.TestCase):
 
     def test_register_successful(self):
         # setup
-        url = f"{self.base_url}/register"
+        url = f"{self._BASE_URL}/register"
         data = {
             "email": "eve.holt@reqres.in",
             "password": "pistol"
@@ -102,7 +102,7 @@ class TestApi(unittest.TestCase):
 
     def test_register_unsuccessful(self):
         # setup
-        url = f"{self.base_url}/register"
+        url = f"{self._BASE_URL}/register"
         data = {
             "email": "duplicate@test.com",
             "password": "newPassword"
@@ -114,9 +114,9 @@ class TestApi(unittest.TestCase):
 
     def test_delayed_response(self):
         # setup
-        url = f"{self.base_url}/users?delay=3"
+        url = f"{self._BASE_URL}/users?delay=3"
         # action
-        response = requests.get(url, timeout=self.timeout)
+        response = requests.get(url, timeout=self._TIMEOUT)
         self.assertEqual(response.status_code, 200)
 
         # Way to handle the timeout gracefully, e.g., print a message

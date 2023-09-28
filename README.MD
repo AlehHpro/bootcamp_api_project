@@ -22,6 +22,9 @@ Before you can run the tests, make sure you have the following installed:
 -```pipenv --python 3```  
 -```pipenv install```
 
+## Navigate to api_tests.py file and install missing packages ('requests') by
+## clicking highlighted rows.
+
 # Running Tests
 
 1. Open your terminal.
