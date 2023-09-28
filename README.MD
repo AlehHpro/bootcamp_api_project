@@ -13,17 +13,15 @@ Before you can run the tests, make sure you have the following installed:
   pip install pipenv
 
 # Installation
+
+  Create new project in PyCharm selecting 'New environment using Pipenv' option.
+
 ## Clone the repository:
--```git clone git@github.com:AlehHpro/bootcamp_api_project.git```   
 
-  cd */bootcamp_api_project
-
-## Create a virtual environment and install dependencies:
--```pipenv --python 3```  
--```pipenv install```
-
-## Navigate to api_tests.py file and install missing packages ('requests') by
-## clicking highlighted rows.
+- In terminal navigate to your project directory.
+- Run ```git clone git@github.com:AlehHpro/bootcamp_api_project.git```
+- Open api_tests.py file and install missing packages ('requests') by
+  clicking highlighted rows.
 
 # Running Tests
 
